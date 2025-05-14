@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        } */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 400px;
+            height: 300px;
+            border: 2px solid black;
+        }
+
+        .password {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 50px;
+            border: 2px solid black;
+        }
+
+        .Generate {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 20px;
+            width: 80px;
+            height: 30px;
+        }
+
+        .theme {
+            width: 200px;
+            height: 40px;
+            margin: 20px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="password">
+            <p id="pass">Password</p>
+        </div>
+        <button class="Generate">Generate</button>
+    </div>
+    <button class="theme">Change Theme</button>
+
+
+    <script>
+
+        const container = document.querySelector(".container")
+        const password = document.querySelector(".password")
+        const btn = document.querySelector(".Generate")
+        const para = document.getElementById("pass")
+        const theme=document.querySelector(".theme")
+
+        const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghigklmnopkwstuvwxyz";
+
+        btn.addEventListener("click", function () {
+            let result = "";
+            for (let i = 0; i < 8; i++) {
+                const randomIndex = Math.floor(Math.random() * 52);
+                result += alphabet[randomIndex];
+            }
+            para.innerText = result;
+        })
+
+        let mode=1;
+        theme.addEventListener("click", function(){
+            if(mode==1){
+                container.style.backgroundColor="black"
+                password.style.backgroundColor="white"
+
+                mode=0
+            }else{
+                
+                container.style.backgroundColor="white"
+                mode=1
+            }
+        })
+        
+    </script>
+</body>
+
+</html>
